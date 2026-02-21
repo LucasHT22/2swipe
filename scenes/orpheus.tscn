@@ -1,10 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3oetkbhrdxup"]
+[gd_scene load_steps=7 format=3 uid="uid://b3oetkbhrdxup"]
+
+[ext_resource type="Script" uid="uid://c2aaudgcr33mj" path="res://scenes/orpheus.gd" id="1_1ltk7"]
+[ext_resource type="Texture2D" uid="uid://7023g1umbth5" path="res://assets/orpheusidle.PNG" id="1_488sw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ltk7"]
+atlas = ExtResource("1_488sw")
+region = Rect2(0, 0, 500, 566)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sor2"]
+atlas = ExtResource("1_488sw")
+region = Rect2(500, 0, 500, 566)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fqoqe"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_1ltk7")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_1sor2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_488sw"]
+radius = 15.297058
 
 [node name="orpheus" type="CharacterBody2D"]
+script = ExtResource("1_1ltk7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -45)
+scale = Vector2(0.22048911, 0.22048904)
 sprite_frames = SubResource("SpriteFrames_fqoqe")
+autoplay = "default"
+frame = 1
+frame_progress = 0.87501836
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -27)
+shape = SubResource("CircleShape2D_488sw")
