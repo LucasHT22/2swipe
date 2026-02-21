@@ -1,11 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://yiw4hedt8ij6"]
+[gd_scene load_steps=15 format=3 uid="uid://yiw4hedt8ij6"]
 
-[ext_resource type="Script" uid="uid://cp8kumn0481eu" path="res://scripts/Panel.gd" id="1_hnfoo"]
-[ext_resource type="Script" uid="uid://dgipi3k3xawwd" path="res://scripts/line_edit.gd" id="2_cy3nx"]
-[ext_resource type="Script" uid="uid://b8kew4c6vhodw" path="res://scripts/clue_label.gd" id="2_jt2ba"]
+[ext_resource type="Script" path="res://scripts/Panel.gd" id="1_hnfoo"]
+[ext_resource type="Script" path="res://scripts/line_edit.gd" id="2_cy3nx"]
+[ext_resource type="Script" path="res://scripts/clue_label.gd" id="2_jt2ba"]
+[ext_resource type="Texture2D" uid="uid://bgklabgxcdwbi" path="res://assets/progbar.PNG" id="4_jhx13"]
+[ext_resource type="Texture2D" uid="uid://bb37be0e2wafb" path="res://assets/progbar_prog.PNG" id="5_lw61g"]
+[ext_resource type="Texture2D" uid="uid://dfl1kv2iexatn" path="res://assets/dead.PNG" id="6_51fhk"]
+[ext_resource type="Texture2D" uid="uid://db0nafg75knfv" path="res://assets/accepted.jpg" id="7_co030"]
+[ext_resource type="Texture2D" uid="uid://bii51m3buvq35" path="res://assets/declined.jpg" id="8_omqc4"]
+[ext_resource type="AudioStream" uid="uid://dpq3jvw700tu4" path="res://assets/accepted_reeves.mp3" id="9_ts4c0"]
+[ext_resource type="AudioStream" uid="uid://m6cwb54b5b7a" path="res://assets/declined_reeves.mp3" id="10_4cyyc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18kxd"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwfkr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4pipy"]
+texture = ExtResource("5_lw61g")
 
 [sub_resource type="ImageTexture" id="ImageTexture_dqtyi"]
 
@@ -34,27 +47,64 @@ grow_vertical = 2
 layout_mode = 2
 script = ExtResource("1_hnfoo")
 
-[node name="ColorLabel" type="Label" parent="Background/MarginContainer/Panel"]
+[node name="ProgressBar" type="ProgressBar" parent="Background/MarginContainer/Panel"]
 layout_mode = 0
+offset_left = 1.0
+offset_top = -70.0
+offset_right = 804.0
+offset_bottom = -19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_kwfkr")
+theme_override_styles/fill = SubResource("StyleBoxTexture_4pipy")
+max_value = 60.0
+step = 1.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Background/MarginContainer/Panel/ProgressBar"]
+layout_mode = 0
+offset_left = -51.0
+offset_top = -422.0
+offset_right = 855.0
+offset_bottom = 478.0
+texture_under = ExtResource("4_jhx13")
+texture_progress = ExtResource("5_lw61g")
+
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/Panel"]
+layout_mode = 0
+offset_left = 2.5
+offset_top = 48.5
+offset_right = 802.5
+offset_bottom = 453.5
+texture = SubResource("ImageTexture_dqtyi")
+
+[node name="ColorRect" type="ColorRect" parent="Background/MarginContainer/Panel/TextureRect"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -48.0
 offset_right = 801.0
-offset_bottom = 167.0
-text = "Color"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_bottom = 366.0
+color = Color(0, 0.443756, 0.443756, 1)
 
 [node name="ClueLabel" type="Label" parent="Background/MarginContainer/Panel"]
 layout_mode = 0
-offset_right = 802.0
-offset_bottom = 407.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 807.0
+offset_bottom = 410.0
+theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_jt2ba")
 
-[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/Panel"]
+[node name="Label" type="Label" parent="Background/MarginContainer/Panel"]
 layout_mode = 0
-offset_right = 800.0
-offset_bottom = 405.0
-texture = SubResource("ImageTexture_dqtyi")
+offset_left = 3.5
+offset_top = 8.5
+offset_right = 806.5
+offset_bottom = 82.5
+theme_override_font_sizes/font_size = 30
+text = "Tell your partner to swipe..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="Background/MarginContainer/Panel"]
 modulate = Color(1, 1, 1, 0)
@@ -63,25 +113,47 @@ offset_left = 2.5
 offset_top = 433.5
 offset_right = 805.0
 offset_bottom = 489.0
-keep_editing_on_text_submit = true
 script = ExtResource("2_cy3nx")
 
-[node name="Label" type="Label" parent="Background/MarginContainer/Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="ProgressBar" type="ProgressBar" parent="Background/MarginContainer/Panel"]
-layout_mode = 0
-offset_right = 805.5
-offset_bottom = 27.5
-max_value = 30.0
-step = 1.0
-
 [node name="Timer" type="Timer" parent="Background/MarginContainer/Panel"]
-wait_time = 30.0
+wait_time = 60.0
 one_shot = true
 autostart = true
+
+[node name="TextureRect2" type="TextureRect" parent="Background/MarginContainer/Panel"]
+layout_mode = 0
+offset_left = -106.5
+offset_top = -94.5
+offset_right = -8.5
+offset_bottom = -12.5
+texture = ExtResource("6_51fhk")
+expand_mode = 2
+
+[node name="accept" type="TextureRect" parent="Background/MarginContainer/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 208.5
+offset_top = 435.5
+offset_right = 582.5
+offset_bottom = 500.5
+texture = ExtResource("7_co030")
+expand_mode = 2
+
+[node name="decline" type="TextureRect" parent="Background/MarginContainer/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 194.5
+offset_top = 420.5
+offset_right = 595.5
+offset_bottom = 499.5
+texture = ExtResource("8_omqc4")
+expand_mode = 2
+
+[node name="Accepted_sound" type="AudioStreamPlayer" parent="Background/MarginContainer/Panel"]
+stream = ExtResource("9_ts4c0")
+
+[node name="Declined_sound" type="AudioStreamPlayer" parent="Background/MarginContainer/Panel"]
+stream = ExtResource("10_4cyyc")
 
 [connection signal="text_submitted" from="Background/MarginContainer/Panel/LineEdit" to="Background/MarginContainer/Panel/LineEdit" method="_on_text_submitted"]
 [connection signal="timeout" from="Background/MarginContainer/Panel/Timer" to="Background/MarginContainer/Panel" method="_on_timer_timeout"]
