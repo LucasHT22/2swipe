@@ -2,7 +2,8 @@ extends Panel
 
 @onready var time_bar: ProgressBar = $ProgressBar
 @onready var timer: Timer = $Timer
-@onready var feedback: Label = $FeedbackLabel
+@onready var feedback_accept: TextureRect = $accept
+@onready var feedback_decline: TextureRect = $decline
 
 const TIME_BONUS: float = 10.0
 const TIME_LOST: float = 5.0
@@ -41,16 +42,17 @@ func check_answer():
 	if ip_card.contains(results[current_index]):
 		Global.progress += 10
 		add_time_bonus()
-		feedback.text = "CORRECT!"
-		feedback.modulate = Color.GREEN
+		feedback_accept.visible = true
+		await get_tree().create_timer(1.0).timeout
+		feedback_accept.visible = false
 		print("Correct:", Global.progress)
 		print(timer.time_left)
 	else:
 		Global.progress -= 10
 		remove_time_bonus()
-		feedback.text = "WRONG!"
-		feedback.modulate = Color.RED
-		print("Wrong:", Global.progress)
+		feedback_decline.visible = true
+		await get_tree().create_timer(1.0).timeout
+		feedback_decline.visible = false
 		print(timer.time_left)
 		if Global.progress <= 0:
 			get_tree().change_scene_to_file("res://scenes/game_over.tscn")

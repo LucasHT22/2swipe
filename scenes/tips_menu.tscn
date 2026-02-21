@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://yiw4hedt8ij6"]
+[gd_scene load_steps=13 format=3 uid="uid://yiw4hedt8ij6"]
 
 [ext_resource type="Script" path="res://scripts/Panel.gd" id="1_hnfoo"]
 [ext_resource type="Script" path="res://scripts/line_edit.gd" id="2_cy3nx"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bgklabgxcdwbi" path="res://assets/progbar.PNG" id="4_jhx13"]
 [ext_resource type="Texture2D" uid="uid://bb37be0e2wafb" path="res://assets/progbar_prog.PNG" id="5_lw61g"]
 [ext_resource type="Texture2D" uid="uid://dfl1kv2iexatn" path="res://assets/dead.PNG" id="6_51fhk"]
+[ext_resource type="Texture2D" uid="uid://db0nafg75knfv" path="res://assets/accepted.jpg" id="7_co030"]
+[ext_resource type="Texture2D" uid="uid://bii51m3buvq35" path="res://assets/declined.jpg" id="8_omqc4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18kxd"]
 bg_color = Color(1, 1, 1, 1)
@@ -125,13 +127,25 @@ offset_bottom = -12.5
 texture = ExtResource("6_51fhk")
 expand_mode = 2
 
-[node name="FeedbackLabel" type="Label" parent="Background/MarginContainer/Panel"]
+[node name="accept" type="TextureRect" parent="Background/MarginContainer/Panel"]
+visible = false
 layout_mode = 0
-offset_left = 9.0
-offset_top = 461.0
-offset_right = 805.0
-offset_bottom = 484.0
-horizontal_alignment = 1
+offset_left = 208.5
+offset_top = 435.5
+offset_right = 582.5
+offset_bottom = 500.5
+texture = ExtResource("7_co030")
+expand_mode = 2
+
+[node name="decline" type="TextureRect" parent="Background/MarginContainer/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 194.5
+offset_top = 420.5
+offset_right = 595.5
+offset_bottom = 499.5
+texture = ExtResource("8_omqc4")
+expand_mode = 2
 
 [connection signal="text_submitted" from="Background/MarginContainer/Panel/LineEdit" to="Background/MarginContainer/Panel/LineEdit" method="_on_text_submitted"]
 [connection signal="timeout" from="Background/MarginContainer/Panel/Timer" to="Background/MarginContainer/Panel" method="_on_timer_timeout"]
