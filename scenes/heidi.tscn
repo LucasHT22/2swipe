@@ -33,13 +33,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 6.0,
 "texture": SubResource("AtlasTexture_3erkm")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_5qq1j")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }]
@@ -50,7 +50,7 @@ radius = 37.420464
 [node name="heidi" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3, -43)
+position = Vector2(-1.0000005, -44)
 scale = Vector2(0.21345198, 0.21345198)
 sprite_frames = SubResource("SpriteFrames_3erkm")
 animation = &"jump"
