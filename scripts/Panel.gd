@@ -4,6 +4,8 @@ extends Panel
 @onready var timer: Timer = $Timer
 @onready var feedback_accept: TextureRect = $accept
 @onready var feedback_decline: TextureRect = $decline
+@onready var feedback_accept_sound: AudioStreamPlayer = $accept_sound
+@onready var feedback_decline_sound: AudioStreamPlayer = $decline_sound
 
 const TIME_BONUS: float = 10.0
 const TIME_LOST: float = 5.0
@@ -43,6 +45,7 @@ func check_answer():
 		Global.progress += 10
 		add_time_bonus()
 		feedback_accept.visible = true
+		feedback_accept_sound.play()
 		await get_tree().create_timer(1.0).timeout
 		feedback_accept.visible = false
 		print("Correct:", Global.progress)
@@ -51,6 +54,7 @@ func check_answer():
 		Global.progress -= 10
 		remove_time_bonus()
 		feedback_decline.visible = true
+		feedback_decline_sound.play()
 		await get_tree().create_timer(1.0).timeout
 		feedback_decline.visible = false
 		print(timer.time_left)
