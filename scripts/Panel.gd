@@ -2,12 +2,13 @@ extends Panel
 
 @onready var time_bar: ProgressBar = $ProgressBar
 @onready var timer: Timer = $Timer
+@onready var feedback: Label = $FeedbackLabel
 
-const TIME_BONUS: float = 2.0
+const TIME_BONUS: float = 10.0
 const TIME_LOST: float = 5.0
 
 var clues = [
-	"veggie bowl",
+	"burrito bowl",
 	"island money",
 	"buy in bulk",
 	"strrrrrrrrrrrrrrrrrrrike!",
@@ -40,11 +41,15 @@ func check_answer():
 	if ip_card.contains(results[current_index]):
 		Global.progress += 10
 		add_time_bonus()
+		feedback.text = "CORRECT!"
+		feedback.modulate = Color.GREEN
 		print("Correct:", Global.progress)
 		print(timer.time_left)
 	else:
 		Global.progress -= 10
 		remove_time_bonus()
+		feedback.text = "WRONG!"
+		feedback.modulate = Color.RED
 		print("Wrong:", Global.progress)
 		print(timer.time_left)
 		if Global.progress <= 0:
