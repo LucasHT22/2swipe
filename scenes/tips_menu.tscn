@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://yiw4hedt8ij6"]
+[gd_scene load_steps=25 format=3 uid="uid://yiw4hedt8ij6"]
 
 [ext_resource type="Script" uid="uid://cp8kumn0481eu" path="res://scripts/Panel.gd" id="1_hnfoo"]
 [ext_resource type="Script" uid="uid://dgipi3k3xawwd" path="res://scripts/line_edit.gd" id="2_cy3nx"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cm8rywmugyihn" path="res://assets/safe.png" id="11_y8qnv"]
 [ext_resource type="Texture2D" uid="uid://6155sffjtnnj" path="res://assets/key.png" id="14_lxywc"]
 [ext_resource type="Texture2D" uid="uid://c4nwpi6ggnmn0" path="res://assets/accept.png" id="14_wgamx"]
+[ext_resource type="Texture2D" uid="uid://1xpotj71megg" path="res://assets/arrow.png" id="14_yvh0e"]
+[ext_resource type="Texture2D" uid="uid://i1l80bl653oc" path="res://assets/instructions.png" id="17_3fwq6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18kxd"]
 bg_color = Color(1, 1, 1, 1)
@@ -82,7 +84,7 @@ scale = Vector2(4.275, 2.18)
 texture = ExtResource("11_bttwu")
 
 [node name="Lev1Bg" type="Sprite2D" parent="Background/MarginContainer/Panel"]
-position = Vector2(421.5, 321.5)
+position = Vector2(418.5, 316.5)
 scale = Vector2(2.6208825, 2.6208825)
 texture = ExtResource("2_wgamx")
 
@@ -163,6 +165,11 @@ sprite_frames = SubResource("SpriteFrames_lxywc")
 autoplay = "default"
 frame_progress = 0.11332767
 
+[node name="Arrow" type="Sprite2D" parent="Background/MarginContainer/Panel"]
+position = Vector2(750.5, 310.5)
+scale = Vector2(0.076023504, 0.076023504)
+texture = ExtResource("14_yvh0e")
+
 [node name="Accept" type="Sprite2D" parent="Background/MarginContainer/Panel"]
 visible = false
 position = Vector2(20.49997, 67.5)
@@ -176,6 +183,11 @@ position = Vector2(22.5, 64.5)
 rotation = -0.2617994
 scale = Vector2(0.15487668, 0.15487668)
 texture = ExtResource("3_ib4k8")
+
+[node name="Instructions" type="Sprite2D" parent="Background/MarginContainer/Panel"]
+position = Vector2(820.1718, 191.32431)
+scale = Vector2(0.042480998, 0.042480998)
+texture = ExtResource("17_3fwq6")
 
 [connection signal="text_submitted" from="Background/MarginContainer/Panel/LineEdit" to="Background/MarginContainer/Panel/LineEdit" method="_on_text_submitted"]
 [connection signal="timeout" from="Background/MarginContainer/Panel/Timer" to="Background/MarginContainer/Panel" method="_on_timer_timeout"]

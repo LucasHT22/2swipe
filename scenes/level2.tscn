@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://b8am3hpwh01ro"]
+[gd_scene load_steps=23 format=4 uid="uid://b8am3hpwh01ro"]
 
 [ext_resource type="PackedScene" uid="uid://b3oetkbhrdxup" path="res://scenes/orpheus.tscn" id="1_d6fun"]
 [ext_resource type="PackedScene" uid="uid://dasugdubqg1s1" path="res://scenes/heidi.tscn" id="2_if4l3"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/cardinput.gd" id="9_bo4dx"]
 [ext_resource type="PackedScene" path="res://scenes/killzone.tscn" id="9_xa7n4"]
 [ext_resource type="Texture2D" uid="uid://cxfp4amy28adc" path="res://assets/level2bg.png" id="10_bo4dx"]
+[ext_resource type="Texture2D" uid="uid://uh06bywxmf1f" path="res://assets/instructionslev2.png" id="11_76toy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_alqfr"]
 texture = ExtResource("4_2k3dv")
@@ -195,5 +196,11 @@ script = ExtResource("9_bo4dx")
 position = Vector2(-6, -24.999994)
 scale = Vector2(0.76417196, 0.76417196)
 texture = ExtResource("10_bo4dx")
+
+[node name="Instructionslev2" type="Sprite2D" parent="."]
+position = Vector2(-267, -437)
+rotation = 0.05235988
+scale = Vector2(0.08056007, 0.08056007)
+texture = ExtResource("11_76toy")
 
 [connection signal="text_submitted" from="cardinput" to="cardinput" method="_on_text_submitted"]
