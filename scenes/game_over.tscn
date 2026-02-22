@@ -1,4 +1,23 @@
-[gd_scene load_steps=0 format=3 uid="uid://kf2wua2no8bm"]
+[gd_scene load_steps=6 format=3 uid="uid://dl6ylyrv28ki7"]
+
+[ext_resource type="Texture2D" uid="uid://c1qbsbab87hu" path="res://assets/gameover_g.png" id="1_wqhvx"]
+[ext_resource type="Texture2D" uid="uid://dutu3iu7ia6sk" path="res://assets/gameover_o.png" id="2_tbwuq"]
+[ext_resource type="Texture2D" uid="uid://pkb64duaowxy" path="res://assets/yousuck.png" id="3_tbwuq"]
+[ext_resource type="Texture2D" uid="uid://cxfp4amy28adc" path="res://assets/level2bg.png" id="4_racf3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_racf3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wqhvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tbwuq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="GameOver" type="Node2D"]
 
@@ -11,8 +30,20 @@ layout_mode = 0
 offset_right = 1157.0
 offset_bottom = 662.0
 
-[node name="Label" type="Label" parent="Panel/MarginContainer"]
-layout_mode = 2
-text = "GAME OVER!!"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/MarginContainer"]
+z_index = 3
+position = Vector2(581, 227.00002)
+scale = Vector2(0.34420356, 0.34420356)
+sprite_frames = SubResource("SpriteFrames_racf3")
+frame_progress = 0.34695834
+
+[node name="Yousuck" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(555, 537)
+scale = Vector2(0.17770627, 0.17770627)
+texture = ExtResource("3_tbwuq")
+
+[node name="Level2Bg" type="Sprite2D" parent="."]
+position = Vector2(572.99994, 435.99997)
+scale = Vector2(0.526963, 0.526963)
+texture = ExtResource("4_racf3")
