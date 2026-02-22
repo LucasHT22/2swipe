@@ -49,8 +49,15 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.get_parent() != self:
 		print("heidi was attacked")
 		var dir = sign(self.position.x - area.get_parent().position.x)
-		knockback = Vector2(dir * SPEED * 2, randi_range(-400,-200))
-
+		if Global.is_new_card:
+			print("special attack")
+			knockback = Vector2(dir * SPEED * 2, randi_range(-700,-400))
+			Global.is_new_card = false
+		else:
+			print("not special attack")
+			knockback = Vector2(dir * SPEED * 2, randi_range(-400,-200))
+			Global.is_new_card = false
+			
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "attack":
 		is_attacking = false
@@ -58,4 +65,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func attack():
 	is_attacking = true
 	animated_player.play("attack")
+	
+func shake():
+	var original_pos = self.position
+	var tween = create_tween()
+	tween.tween_property(self, "position", original_pos + Vector2(10, 0), 0.05)
+	tween.tween_property(self, "position", original_pos + Vector2(-10, 0), 0.05)
+	tween.tween_property(self, "position", original_pos + Vector2(8, 0), 0.05)
+	tween.tween_property(self, "position", original_pos + Vector2(-8, 0), 0.05)
+	tween.tween_property(self, "position", original_pos, 0.05)
 	

@@ -4,8 +4,8 @@ extends LineEdit
 @onready var orpheus = get_node("/root/Level2/orpheus")
 
 const playercards = [
-	"%b5896295042795981",
-	"%b6398840026017826"
+	"5896295042795981",
+	"6398840026017826"
 ]
 
 func _ready():
@@ -22,7 +22,17 @@ func check_card():
 	var ip_card = Global.input_card
 	
 	if ip_card.contains(playercards[0]):
+		print("orpheus is attacking")
 		orpheus.attack()
+		Global.is_new_card = false
 	elif ip_card.contains(playercards[1]):
+		print("heidi is attacking")
 		heidi.attack()
-		
+		Global.is_new_card = false
+	else:
+		print("new card")
+		Global.is_new_card = true
+		var p = [heidi, orpheus]
+		var rand = randi_range(0,p.size()-1)
+		p[rand].shake()
+		p[rand].attack()
