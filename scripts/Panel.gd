@@ -4,8 +4,8 @@ extends Panel
 @onready var timer: Timer = $Timer
 @onready var feedback_accept: TextureRect = $accept
 @onready var feedback_decline: TextureRect = $decline
-@onready var feedback_accept_sound: AudioStreamPlayer = $accept_sound
-@onready var feedback_decline_sound: AudioStreamPlayer = $decline_sound
+@onready var feedback_accept_sound: AudioStreamPlayer = $Accepted_sound
+@onready var feedback_decline_sound: AudioStreamPlayer = $Declined_sound
 
 const TIME_BONUS: float = 10.0
 const TIME_LOST: float = 5.0
